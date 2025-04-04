@@ -1,8 +1,12 @@
 import java.util.Scanner;
+
 import net.jpountz.xxhash.XXHashFactory;
 import net.jpountz.xxhash.XXHash32;
 
 public class hash_app {
+    // We need to have a single variable that will be accessed from all threads, so we will declare
+    // it as static volatile
+    public static volatile boolean flag = true;
     public static void hashing(int n){
         Scanner sc = new Scanner(System.in);
 
@@ -37,6 +41,14 @@ public class hash_app {
         int s = sc.nextInt();
         sc.nextLine();
 
-        hashing(n);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Ctrl + C has been pressed");
+            flag = false;
+        }));
+
+        while (flag){
+            hashing(n);
+        }
+
     }
 }
