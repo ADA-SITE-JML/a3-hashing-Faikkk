@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.util.Scanner;
 
 import net.jpountz.xxhash.XXHashFactory;
@@ -14,11 +15,20 @@ public class hash_app {
 
         try {
             String filename = String.format("buckets/%d.txt", index);
+            FileWriter writer = new FileWriter(filename,true);
             File bucketFile = new File(filename);
 
-            if (bucketFile.createNewFile()){
-                System.out.println("The string " + input + " is stored in " + index + ".txt");
+            bucketFile.createNewFile();
+            System.out.println("The string " + input + " is stored in " + index + ".txt");
+            
+            if (bucketFile.length() == 0){
+                writer.write(input);
             }
+            else{
+                writer.write('\n' + input);
+            }
+            
+            writer.close();
 
         } catch (Exception e) {
             System.out.println("Error with file operations has occured.");
