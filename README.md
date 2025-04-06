@@ -1,1 +1,5 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/4SJ6njmv)
+I have chosen Option A.
+
+The hashing algorithm used is xxHash, which is a suitable choice, if you want fast hashing and not concerned about security.
+
+NOTE: The whole submitted "hash_app" file should be downloaded and opened in code editor, as the pom.xml file includes the dependency for xxHash.
